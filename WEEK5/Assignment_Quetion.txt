@@ -1,0 +1,16 @@
+1) Write a program to check if a given string is a Palindrome.
+A palindrome reads same from front and back e.g.- aba, ccaacc, mom, etc.
+
+2) Write down the names of 10 of your friends in a list and then sort those in alphabetically ascending order.
+
+3) Write a program to find out the largest and smallest word in the string "This is an umbrella".
+
+4) Write a python program to find largest number in a given list with out using max()
+
+5) Write a python program to print all even numbers from a given list.
+
+6) Write a python program to create a list of even numbers and another list of odd numbers from a given list
+
+7) Write a python program to remove repeated elements from a given list without using built-in method
+
+8) Write a python program to sort a given list of numbers with out using sort() function
