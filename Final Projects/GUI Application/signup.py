@@ -49,7 +49,7 @@ def save():
     password1 = password.get()
     conf_password1 = confirm_password.get()
     otp_new = otp.get()
-    if ((len(name) > 0)  and (len(phone_number) > 0) and (len(dob) > 0) and (len(mail) > 0) and (len(password1) > 0) and (len(conf_password1) > 0) (len(otp_new) > 0)):
+    if ((len(name) > 0)  and (len(phone_number) > 0) and (len(dob) > 0) and (len(mail) > 0) and (len(password1) > 0) and (len(conf_password1) > 0) and (len(otp_new) > 0)):
         if password1 == conf_password1:  
             if OTP == otp_new:
                 details = name + ' ' + address + ' ' + str(phone_number) + ' ' + dob + ' ' + str (mail) + ' ' + str(conf_password1) + ' ' +'\n'
