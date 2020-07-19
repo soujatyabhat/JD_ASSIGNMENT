@@ -118,7 +118,8 @@ def declear_winner(player):
 
 
 def reset():
-    global cell_counter = messagebox.askquestion("Confirmation","Do You Want to play again ?")
+    global cell_counter
+    n = messagebox.askquestion("Confirmation","Do You Want to play again ?")
     if n == 'yes' :  
         text1['state'] = 'normal'
         text2['state'] = 'normal'
