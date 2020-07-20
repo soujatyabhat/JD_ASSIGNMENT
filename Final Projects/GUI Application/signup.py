@@ -31,9 +31,9 @@ def sendmail():
     global OTP,server
     OTP = random.randint(100000, 999999)
     server=smtplib.SMTP_SSL('smtp.gmail.com',465)
-    server.login("soujatya.bhat2000@gmail.com","@soujatya123**")
+    server.login("Sendermail@gmail.com","1234")
     OTP = str(OTP)
-    server.sendmail("soujatya.bhat2000@gmail.com", "candila.ppf105@gmail.com",OTP)
+    server.sendmail("Sender@gmail.com", "Receiver@gmail.com",OTP)
     messagebox.showinfo("Sending Successful","OTP has send to your email")
  
 

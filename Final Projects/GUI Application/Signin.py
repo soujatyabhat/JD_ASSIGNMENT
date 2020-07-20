@@ -46,6 +46,7 @@ def add():
             break
     if flag1 == 1:
          messagebox.showinfo("Conglatunation","Welcome to our portal")
+         messagebox.showinfo("Information","Please goto the user_details application")
          file = open("about.txt","w")
          file.write(a)
          file.close()
