@@ -33,7 +33,8 @@ def sendmail():
     server=smtplib.SMTP_SSL('smtp.gmail.com',465)
     server.login("Sendermail@gmail.com","1234")
     OTP = str(OTP)
-    server.sendmail("Sender@gmail.com", "Receiver@gmail.com",OTP)
+    mail = email.get()
+    server.sendmail("Sender@gmail.com",mail,OTP)
     messagebox.showinfo("Sending Successful","OTP has send to your email")
  
 
