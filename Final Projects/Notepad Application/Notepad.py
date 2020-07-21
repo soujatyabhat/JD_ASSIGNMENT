@@ -43,25 +43,29 @@ def openf():
         TextArea.insert(1.0, fpt.read())
         fpt.close()
 
-def saveAS():
+def save():
     global file
-    file = asksaveasfilename(initialfile = 'Untitled.txt', defaultextension=".txt",
+    
+    if file == None:
+        file = asksaveasfilename(initialfile = 'Untitled.txt', defaultextension=".txt",
                            filetypes=[("All Files", "*.*"),
                                      ("Text Documents", "*.txt")])
-    if file == None:
-        file = None
+    
+        if file == "":
+            file = None
+        else:
+            top.title(os.path.basename(file) + "- SS Notepad")
+            fpt = open(file,"w")
+            fpt.write(TextArea.get(1.0,END))
+            fpt.close()
+            
+            
     else:
         top.title(os.path.basename(file) + "- SS Notepad")
         fpt = open(file,"w")
         fpt.write(TextArea.get(1.0,END))
         fpt.close()
  
-def save():     
-     if file != "":
-        top.title(os.path.basename(file) + "- SS Notepad")
-        fpt = open(file,"w")
-        fpt.write(TextArea.get(1.0,END))
-        fpt.close()
         
 def find():
     global string_count
@@ -106,7 +110,6 @@ File = Menu(menubar)
 File.add_command(label = "New",command = new)
 File.add_command(label = "Open",command = openf)
 File.add_command(label = "Save",command = save)
-File.add_command(label = "Save As",command = saveAS)
 File.add_separator()
 File.add_command(label = "Exit", command = ex)
 menubar.add_cascade(label="File", menu=File) 
@@ -130,4 +133,10 @@ Help.add_command(label="About",command=about)
 menubar.add_cascade(label="Help", menu=Help)
 
 top.config(menu = menubar)
+
+#Scrollbar
+Scroll = Scrollbar(TextArea)
+Scroll.pack(side=RIGHT,  fill=Y)
+Scroll.config(command=TextArea.yview)
+TextArea.config(yscrollcommand=Scroll.set)
 top.mainloop()
