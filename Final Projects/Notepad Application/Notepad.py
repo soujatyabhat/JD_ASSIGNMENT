@@ -7,12 +7,15 @@ Created on Tue Jul 21 19:05:52 2020
 from tkinter import *
 from tkinter.messagebox import *
 from tkinter.filedialog import askopenfilename, asksaveasfilename
+import pyglet
+from pyglet.window import key
 import os
 
 top = Tk()
 top.minsize(640,402)
 file = None
-string_count = 0
+back_counter = string_count = 0
+copied_data = " "
 top.title("Untitled - Notepad")
 top.wm_iconbitmap("notepad_icon.ico")
 TextArea = Text(top,font = "verdana")
@@ -102,7 +105,21 @@ def about():
     message = "Developed By: Soujatya Bhattacharya\n Version : 1.0"
     messagebox.showinfo("About",message)
 
+                        
+def undo():
+     TextArea.delete(1.0,END)
+     TextArea.insert(1.0,copied_data)
 
+def key(event):
+    global back_counter,copied_data
+    if event.keysym == 'space':
+        if(back_counter > 0):    
+            copied_data = TextArea.get(1.0,END)
+            back_counter = 0            
+        else:
+            back_counter += 1
+            
+        
 menubar = Menu(top)
 
 #File Submenu
@@ -120,6 +137,7 @@ Edit = Menu(menubar)
 Edit.add_command(label = "Cut",command = cut)
 Edit.add_command(label = "Copy",command = copy)
 Edit.add_command(label = "Paste",command = paste)
+Edit.add_command(label = "Undo",command = undo)
 Edit.add_separator()
 Edit.add_command(label = "Find",command = find)
 Edit.add_command(label = "Find & Replace",command = find_replace)
@@ -130,7 +148,7 @@ menubar.add_cascade(label="Edit", menu=Edit)
 #Others
 Help = Menu(menubar)
 Help.add_command(label="About",command=about)
-menubar.add_cascade(label="Help", menu=Help)
+menubar.add_cascade(label="About", menu=Help)
 
 top.config(menu = menubar)
 
@@ -139,4 +157,7 @@ Scroll = Scrollbar(TextArea)
 Scroll.pack(side=RIGHT,  fill=Y)
 Scroll.config(command=TextArea.yview)
 TextArea.config(yscrollcommand=Scroll.set)
+
+#Evet call
+top.bind_all('<Key>', key)
 top.mainloop()
